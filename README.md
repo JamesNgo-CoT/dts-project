@@ -1,2 +1,3 @@
-# dts-project
-A template for new DTS projects.
+# DTS Project
+
+A DTS project template.

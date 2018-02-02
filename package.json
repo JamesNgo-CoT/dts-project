@@ -1,0 +1,28 @@
+{
+  "name": "dts-project",
+  "version": "1.0.0",
+  "description": "A DTS project template.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://JamesNgo-CoT@github.com/JamesNgo-CoT/dts-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesNgo-CoT/dts-project/issues"
+  },
+  "homepage": "https://github.com/JamesNgo-CoT/dts-project#readme",
+  "devDependencies": {
+    "backbone": "^1.3.3",
+    "bootstrap": "^4.0.0",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "jquery": "^3.3.1",
+    "underscore": "^1.8.3"
+  }
+}
