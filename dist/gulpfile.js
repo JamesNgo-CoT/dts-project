@@ -13,15 +13,15 @@ const
   rename = require('gulp-rename'),
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
-  uglify = require('gulp-uglify');
+  uglify = require('gulp-uglify')
 
 ////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('cleanup', () => del(['./dist/']));
+gulp.task('cleanup', () => del(['./dist/']))
 
 ////////////////////////////////////////////////////////////////////////////////
 
-const scriptsGlob = ['./src/**/*.js'];
+const scriptsGlob = ['./src/**/*.js']
 
 function gulpScripts() {
   return gulp.src(scriptsGlob)
@@ -35,15 +35,15 @@ function gulpScripts() {
     .pipe(sourcemaps.init())
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/'))
 }
 
-gulp.task('scripts', ['cleanup'], () => gulpScripts());
-gulp.task('scripts-serve', () => gulpScripts().pipe(connect.reload()));
+gulp.task('scripts', ['cleanup'], () => gulpScripts())
+gulp.task('scripts-serve', () => gulpScripts().pipe(connect.reload()))
 
 ////////////////////////////////////////////////////////////////////////////////
 
-const stylesGlob = ['./src/**/*.css', './src/**/*.scss'];
+const stylesGlob = ['./src/**/*.css', './src/**/*.scss']
 
 function gulpStyles() {
   return gulp.src(stylesGlob)
@@ -56,29 +56,29 @@ function gulpStyles() {
     .pipe(sourcemaps.init())
     .pipe(cssnano())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/'))
 }
 
-gulp.task('styles', ['cleanup'], () => gulpStyles());
-gulp.task('styles-serve', () => gulpStyles().pipe(connect.reload()));
+gulp.task('styles', ['cleanup'], () => gulpStyles())
+gulp.task('styles-serve', () => gulpStyles().pipe(connect.reload()))
 
 ////////////////////////////////////////////////////////////////////////////////
 
-const docsGlob = ['./src/**/*.html'];
+const docsGlob = ['./src/**/*.html']
 
 function gulpDocs() {
   return gulp.src(docsGlob)
     .pipe(print())
     .pipe(mustache())
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/'))
 }
 
-gulp.task('docs', ['cleanup'], () => gulpDocs());
-gulp.task('docs-serve', () => gulpDocs().pipe(connect.reload()));
+gulp.task('docs', ['cleanup'], () => gulpDocs())
+gulp.task('docs-serve', () => gulpDocs().pipe(connect.reload()))
 
 ////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('default', ['cleanup', 'scripts', 'styles', 'docs']);
+gulp.task('default', ['cleanup', 'scripts', 'styles', 'docs'])
 
 gulp.task('serve', ['default'], () => {
   connect.server({
@@ -86,10 +86,10 @@ gulp.task('serve', ['default'], () => {
     root: ''
   });
 
-  gulp.watch(scriptsGlob, ['scripts-serve']);
-  gulp.watch(stylesGlob, ['styles-serve']);
-  gulp.watch(docsGlob, ['docs-serve']);
+  gulp.watch(scriptsGlob, ['scripts-serve'])
+  gulp.watch(stylesGlob, ['styles-serve'])
+  gulp.watch(docsGlob, ['docs-serve'])
 
-  const testGlob = ['./test/index.html'];
-  gulp.watch(testGlob, () => gulp.src(testGlob).pipe(print()).pipe(connect.reload()));
+  const testGlob = ['./test.html', './test_form.html']
+  gulp.watch(testGlob, () => gulp.src(testGlob).pipe(print()).pipe(connect.reload()))
 })
